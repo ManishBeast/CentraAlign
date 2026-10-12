@@ -30,7 +30,7 @@ The video shows the agent entering a vendor invoice into the ERP, asking for app
 **Requirements:** Python 3.11+ (developed on 3.12, macOS), Google Chrome installed, and at least one LLM API key. Tested with `browser-use` 0.13.11.
 
 ```bash
-git clone <your-repo-url> centralign && cd centralign
+git clone <https://github.com/ManishBeast/CentraAlign> centralign && cd centralign
 conda create -n opspilot python=3.12 -y && conda activate opspilot   # or any venv
 pip install -r requirements.txt
 cp .env.example .env        # then add at least one API key (see Configuration)
