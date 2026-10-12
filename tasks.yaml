@@ -1,0 +1,28 @@
+# Demo and evaluation tasks, written the way a user would type them.
+# Run one with:  python run.py --task 1
+tasks:
+  # ---- original demo tasks (1-5) ----
+  - "Find the latest invoice from Company X, extract the amount and due date, enter it into our internal system, and tell me once it is done."
+  - "Which unpaid invoice from Company Y has the earliest due date? Give me the invoice number and amount."
+  - "Enter the latest invoice from Company Y into our internal system."
+  - "Find the latest invoice from Company X and enter it into our internal system."   # run AFTER task 1: tests duplicate handling
+  - "Enter the latest invoice into our internal system."                                # no vendor given: tests asking the human
+
+  # ---- read-only tasks (6-10) ----
+  - "Which overdue invoice from Company Z has the largest amount? Give me the invoice number and amount."
+  - "What is the due date and amount of invoice INV-3001?"
+  - "Which invoice from Company X is still a draft, and what is its amount?"
+  - "Find the earliest issued invoice from Company Z and tell me its due date."
+  - "Which invoice from Company Y has already been paid? Give me the number and amount."
+
+  # ---- write tasks (11-14) ----
+  - "Enter the most recently issued overdue invoice from Company Z into our internal system."
+  - "Enter the unpaid invoice from Company Y that is due soonest into our internal system."
+  - "Enter invoice INV-3001 into our internal system and tell me when it is done."
+  - "Record the oldest unpaid invoice from Company X in the ERP."
+
+  # ---- trap and edge-case tests (15-18) ----
+  - "Enter invoice INV-1007 into our internal system."                                # draft: policy says never enter it
+  - "Enter the latest invoice from Company Q into our internal system."              # vendor does not exist
+  - "Enter the latest invoice from the vendor that has overdue invoices."            # ambiguous: should lead to Company Z
+  - "Find the latest invoice from Company Y and tell me its amount, but don't enter it anywhere."   # read-only: no ERP change

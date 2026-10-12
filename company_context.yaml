@@ -1,0 +1,28 @@
+# What the agent knows about how THIS company works.
+# Change this file to point the same agent at a different company's workflow.
+company: Sandbox Co
+
+systems:
+  vendor_portal:
+    url: http://localhost:5050/vendor
+    purpose: >
+      Where vendor invoices are found. Each vendor has an invoice list.
+      Open an invoice to see its full details (vendor, total, due date, status).
+  erp:
+    url: http://localhost:5050/erp
+    purpose: >
+      Internal system where invoices are recorded as bills.
+      Use "New bill entry" to add one, then check it appears in the bill list.
+
+procedures:
+  enter_invoice_into_erp:
+    - Find the invoice on the vendor portal and read vendor, invoice number, total and due date from the invoice DETAIL page.
+    - Open the ERP, click "New bill entry", fill every field and save.
+    - Confirm the bill appears in the ERP bill list.
+
+policies:
+  - Draft invoices are not real invoices. Never treat a draft as the latest invoice and never enter one.
+  - '"Latest invoice" means the most recently issued invoice that is NOT a draft.'
+  - The invoice DETAIL page is the source of truth for amount and due date.
+  - Never enter the same invoice number twice.
+  - Only visit the sandbox sites listed above.

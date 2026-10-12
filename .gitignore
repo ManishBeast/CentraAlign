@@ -1,0 +1,10 @@
+.env
+runs/*
+!runs/.gitkeep
+__pycache__/
+*.pyc
+erp_data.json
+lessons.json
+.pytest_cache/
+*.log
+.DS_Store
